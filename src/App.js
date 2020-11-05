@@ -20,6 +20,7 @@ useEffect(()=> {
 const handleToggle =(value)=> {
   setToggle(value)
 }
+
 const containsSearch =
   data.filter(state => (
     state.StateName.toLowerCase().includes(search.toLowerCase()) 
@@ -32,11 +33,13 @@ const startsWithSearch =
   return (
     <div className="App">
       <div className='container'>
-        <h1>Select State:</h1>
+        <h1 className="main-title">Select State:</h1>
         <input type="text" placeholder="Enter State Name..." onChange={(e)=> setSearch(e.target.value)}/>
         
-        Start with: <input type="radio" name="search" onClick={()=> handleToggle(false)}/>
-        Contains <input type="radio" name="search" onClick={()=> handleToggle(true)}/>
+        <div className="radio_container">
+          Start with: <input type="radio" name="search" onClick={()=> handleToggle(false)}/>
+          Contains <input type="radio" name="search" onClick={()=> handleToggle(true)}/>
+        </div>
         {toggle? containsSearch.map((curr, i)=>(
           <div className="state" key={i}>
             <p>{curr.StateName}</p>
