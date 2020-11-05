@@ -29,24 +29,24 @@ const startsWithSearch =
   data.filter(state => (
     state.StateName.toLowerCase().startsWith(search.toLowerCase()) 
   ));
-
-console.log(data)
   return (
     <div className="App">
-      <h1>Select State:</h1>
-      <input type="text" placeholder="Enter State Name..." onChange={(e)=> setSearch(e.target.value)}/>
-      
-      Start with: <input type="radio" name="search" onClick={()=> handleToggle(false)}/>
-      Contains <input type="radio" name="search" onClick={()=> handleToggle(true)} checked/>
-      {toggle? containsSearch.map(curr=>(
-        <div className="state">
-          {curr.StateName}
-        </div>
-      )): startsWithSearch.map(curr=>(
-        <div className="state">
-          {curr.StateName}
-        </div>
-      ))}
+      <div className='container'>
+        <h1>Select State:</h1>
+        <input type="text" placeholder="Enter State Name..." onChange={(e)=> setSearch(e.target.value)}/>
+        
+        Start with: <input type="radio" name="search" onClick={()=> handleToggle(false)}/>
+        Contains <input type="radio" name="search" onClick={()=> handleToggle(true)}/>
+        {toggle? containsSearch.map((curr, i)=>(
+          <div className="state" key={i}>
+            <p>{curr.StateName}</p>
+          </div>
+        )): startsWithSearch.map((curr, i)=>(
+          <div className="state" key={i}>
+            <p>{curr.StateName}</p>
+          </div>
+        ))}
+      </div>
       
     </div>
   );
